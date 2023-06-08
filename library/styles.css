@@ -1,5 +1,5 @@
 :root {
-    --font-color: red;
+    --font-color-light: rgb(220 206 231);
     --border-color: black;
     --color1: rgb(119, 119, 139);
     --color2: rgb(145, 119, 238);
@@ -12,35 +12,58 @@ body {
 }
 
 header {
-    color: var(--font-color);
+    color: var(--font-color-light);
     position: sticky;
     top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(162, 159, 163);
+    background-color: rgb(22, 20, 20, .7);
     padding: 31px;
+    border-bottom: solid 9px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right,
+            rgb(234, 226, 250),
+            rgb(219,164,219),
+            rgb(123,88,171),
+            rgb(219,164,219),
+            rgb(234, 226, 250));
 }
 
 #book-entry {
+    display: none;
+}
+
+#book-entry > .close {
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#book-entry.show {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
     width: 50vw;
-    height: 50vh;
     border: 3px solid var(--border-color);
+    background-color: var(--color3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
 }
 
-#book-entry.show {
-    display: block;
+label {
+    margin-top: 50px;
 }
 
 #books::before {
     content: "";
-    background-image: linear-gradient(360deg, var(--color1),
-    var(--color2), var(--color3));
+    background-image: linear-gradient(to bottom,
+            rgb(218, 202, 240),
+            rgb(123, 88, 171));
     position: fixed;
     height: 100%;
     width: 100%;
