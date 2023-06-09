@@ -16,6 +16,7 @@ let newBook;
 // let pageInput;
 // let readInput;
 let myLibrary = [];
+myLibrary.forEach(displayBook);
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -36,6 +37,10 @@ function addBook() {
     newBook = new Book(titleInput, authorInput, pageInput, readInput);
     myLibrary.push(newBook);
 }
+
+function displayBook(book) {
+    console.log(book.title);
+};
 
 submitBook.addEventListener('click', (e) => {
     e.preventDefault();
