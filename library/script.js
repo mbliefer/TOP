@@ -9,6 +9,8 @@ const pages = document.querySelector('#pages');
 const notRead = document.querySelector('#not-read');
 const read = document.querySelector('#read');
 const readCheck = document.querySelector('#read-check');
+const bookCards = document.querySelectorAll('.book-card');
+const trash = document.querySelectorAll('.trash');
 
 let newBook;
 let myLibrary = [];
@@ -30,6 +32,9 @@ Book.prototype.createBookCard = function () {
     const h4 = document.createElement('h4');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    const img = document.createElement('img');
+    img.src = 'images/red-delete-10437.svg';
+    img.classList.add('trash');
     div.classList.add('book-card');
     h2.classList.add('title');
     h3.classList.add('author');
@@ -52,6 +57,7 @@ Book.prototype.createBookCard = function () {
     div.appendChild(h4);
     div.appendChild(label);
     div.appendChild(input);
+    div.appendChild(img);
 }
 
 
@@ -67,39 +73,10 @@ function addBook() {
 
     newBook = new Book(titleInput, authorInput, pageInput, readInput);
     myLibrary.push(newBook);
-    myLibrary.map(displayBook);
-    // newBook.createBookCard();
+    newBook.createBookCard();
 }
 
 function displayBook(book) {
-    const div = document.createElement('div');
-    const h2 = document.createElement('h2');
-    const h3 = document.createElement('h3');
-    const h4 = document.createElement('h4');
-    const label = document.createElement('label');
-    const input = document.createElement('input');
-    div.classList.add('book-card');
-    h2.classList.add('title');
-    h3.classList.add('author');
-    h4.classList.add('pages');
-    label.htmlFor = "read-check";
-    label.textContent = "Read ";
-    input.type = "checkbox";
-    input.id = "read-check";
-    input.name = "status";
-    input.value = "Read";
-
-    h2.textContent = book.title;
-    h3.textContent = book.author;
-    h4.textContent = book.pages;
-    input.checked = newBook.read;
-
-    books.appendChild(div);
-    div.appendChild(h2);
-    div.appendChild(h3);
-    div.appendChild(h4);
-    div.appendChild(label);
-    div.appendChild(input);
 };
 
 submitBook.addEventListener('click', (e) => {
