@@ -9,8 +9,10 @@ const pages = document.querySelector('#pages');
 const notRead = document.querySelector('#not-read');
 const read = document.querySelector('#read');
 const readCheck = document.querySelector('#read-check');
-const bookCards = document.querySelectorAll('.book-card');
-const trash = document.querySelectorAll('.trash');
+const bookCards = document.getElementsByClassName('book-card');
+// const trash = document.getElementsByClassName('trash');
+const trash = document.querySelector('.trash');
+
 
 let newBook;
 let myLibrary = [];
@@ -46,6 +48,15 @@ Book.prototype.createBookCard = function () {
     input.name = "status";
     input.value = "Read";
 
+    // const trashCans = Array.from(trash);
+    // trashCans.forEach((can) => {
+    //     can.addEventListener('click', () => {
+    //         console.log(can);
+    //         console.log(this);
+    //     })
+    // });
+
+
     h2.textContent = this.title;
     h3.textContent = this.author;
     h4.textContent = this.pages;
@@ -76,14 +87,14 @@ function addBook() {
     newBook.createBookCard();
 }
 
-function displayBook(book) {
-};
+const displayBook = () => console.log('hi');
 
 submitBook.addEventListener('click', (e) => {
     e.preventDefault();
     addBook();
     bookEntryForm.classList.remove('show');
     console.log(myLibrary);
+    console.log(bookCards);
 });
 
 newBookBtn.addEventListener('click', () => {
@@ -94,3 +105,4 @@ closeX.addEventListener('click', () => {
     bookEntryForm.classList.remove('show');
 });
 
+trash.addEventListener('click', displayBook);
