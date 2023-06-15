@@ -7,7 +7,7 @@ const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
-const readCheck = document.querySelector('#read-check');
+const readCheck = document.querySelectorAll('#read-check');
 const bookCards = document.getElementsByClassName('book-card');
 const trash = document.getElementsByClassName('trash');
 
@@ -19,7 +19,7 @@ let label;
 let input;
 let img;
 
-let newBook;
+// let newBook;
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -29,9 +29,9 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
-Book.prototype.readStatus = function () {
+// Book.prototype.readStatus = function () {
 
-}
+// }
 
 Book.prototype.createBookCard = function () {
     createCardElements();
@@ -39,7 +39,7 @@ Book.prototype.createBookCard = function () {
     h2.textContent = this.title;
     h3.textContent = this.author;
     h4.textContent = this.pages;
-    input.checked = newBook.read;
+    input.checked = this.read;
 }
 
 
@@ -56,7 +56,7 @@ function addBook() {
         readInput = false;
     };
 
-    newBook = new Book(titleInput, authorInput, pageInput, readInput);
+    let newBook = new Book(titleInput, authorInput, pageInput, readInput);
     myLibrary.push(newBook);
     newBook.createBookCard();
 }
@@ -85,6 +85,7 @@ function createCardElements() {
     input.value = "Read";
 
     img.onclick = removeBook;
+    input.onclick = changeReadStatus;
 
     books.appendChild(div);
     div.appendChild(h2);
@@ -98,13 +99,24 @@ function createCardElements() {
 function removeBook(e) {
     let trashCans = Array.from(trash);
     e.target.parentNode.remove();
-    console.log(trashCans.indexOf(e.target));
+    console.log(trashCans.indexOf(this));
     myLibrary.forEach((book) => {
         let bookToRemove = myLibrary.indexOf(book);
-        if (bookToRemove === trashCans.indexOf(e.target)) {
+        if (bookToRemove === trashCans.indexOf(this)) {
             myLibrary.splice(bookToRemove, 1);
         };
     });
+};
+
+function changeReadStatus(e) {
+    let bookCardsArr = Array.from(bookCards);
+    console.log(bookCardsArr.indexOf(this.parentNode));
+    myLibrary.forEach((book) => {
+        let bookTarget = myLibrary.indexOf(book);
+        if (bookTarget === bookCardsArr.indexOf(this.parentNode)) {
+            myLibrary[bookTarget].read = !myLibrary[bookTarget].read;
+        }
+    })
 }
 
 submitBook.addEventListener('click', (e) => {
