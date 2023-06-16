@@ -19,7 +19,6 @@ let label;
 let input;
 let img;
 
-// let newBook;
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -27,11 +26,7 @@ function Book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
-}
-
-// Book.prototype.readStatus = function () {
-
-// }
+};
 
 Book.prototype.createBookCard = function () {
     createCardElements();
@@ -40,8 +35,7 @@ Book.prototype.createBookCard = function () {
     h3.textContent = this.author;
     h4.textContent = this.pages;
     input.checked = this.read;
-}
-
+};
 
 function addBook() {
     let titleInput = title.value;
@@ -59,7 +53,7 @@ function addBook() {
     let newBook = new Book(titleInput, authorInput, pageInput, readInput);
     myLibrary.push(newBook);
     newBook.createBookCard();
-}
+};
 
 function createCardElements() {
     div = document.createElement('div');
@@ -94,12 +88,11 @@ function createCardElements() {
     div.appendChild(label);
     div.appendChild(input);
     div.appendChild(img);
-}
+};
 
 function removeBook(e) {
     let trashCans = Array.from(trash);
     e.target.parentNode.remove();
-    console.log(trashCans.indexOf(this));
     myLibrary.forEach((book) => {
         let bookToRemove = myLibrary.indexOf(book);
         if (bookToRemove === trashCans.indexOf(this)) {
@@ -110,14 +103,13 @@ function removeBook(e) {
 
 function changeReadStatus(e) {
     let bookCardsArr = Array.from(bookCards);
-    console.log(bookCardsArr.indexOf(this.parentNode));
     myLibrary.forEach((book) => {
         let bookTarget = myLibrary.indexOf(book);
         if (bookTarget === bookCardsArr.indexOf(this.parentNode)) {
             myLibrary[bookTarget].read = !myLibrary[bookTarget].read;
         }
     })
-}
+};
 
 submitBook.addEventListener('click', (e) => {
     e.preventDefault();
