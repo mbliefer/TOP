@@ -6,6 +6,7 @@ const books = document.querySelector('#books');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
+const notRead = document.querySelector('#not-read');
 const read = document.querySelector('#read');
 const readCheck = document.querySelectorAll('#read-check');
 const bookCards = document.getElementsByClassName('book-card');
@@ -32,8 +33,8 @@ Book.prototype.createBookCard = function () {
     createCardElements();
 
     h2.textContent = this.title;
-    h3.textContent = this.author;
-    h4.textContent = this.pages;
+    h3.textContent = `By: ${this.author}`;
+    h4.textContent = `${this.pages} pages`;
     input.checked = this.read;
 };
 
@@ -54,6 +55,14 @@ function addBook() {
     myLibrary.push(newBook);
     newBook.createBookCard();
 };
+
+function clearForm() {
+    title.value = "";
+    author.value = "";
+    pages.value  = "";
+    read.checked = false;
+    notRead.checked = true;
+}
 
 function createCardElements() {
     div = document.createElement('div');
@@ -115,8 +124,7 @@ submitBook.addEventListener('click', (e) => {
     e.preventDefault();
     addBook();
     bookEntryForm.classList.remove('show');
-    console.log(myLibrary);
-    console.log(bookCards);
+    clearForm();
 });
 
 newBookBtn.addEventListener('click', () => {

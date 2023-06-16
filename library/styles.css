@@ -18,7 +18,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(22, 20, 20, .7);
+    background-color: var(--color1);
     padding: 31px;
     border-bottom: solid 9px;
     border-image-slice: 1;
@@ -28,6 +28,8 @@ header {
             rgb(123,88,171),
             rgb(219,164,219),
             rgb(234, 226, 250));
+    box-shadow: 0px 15px 30px var(--color3);
+    z-index: 10;
 }
 
 #book-entry {
@@ -54,17 +56,25 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50vw;
-    border: 3px solid var(--border-color);
+    /* border: 3px solid var(--border-color); */
     background-color: var(--color3);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    z-index: 1;
+    z-index: 11;
+    gap: 30px;
+    border-radius: 10px;
 }
 
-label {
-    margin-top: 50px;
+#book-entry > label {
+    margin-bottom: -20px;
+}
+
+#book-entry > input {
+    border: 3px solid var(--color1);
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #books::before {
@@ -85,9 +95,10 @@ label {
     padding: 75px;
     height: 100%;
     margin: 0;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); */
-    gap: 75px;
+    gap: 50px;
 
 }
 
@@ -95,5 +106,35 @@ label {
     position: relative;
     background-color: var(--color3);
     padding: 20px;
-    /* text-align: center; */
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 5%;
+    width: clamp(440px, 80%, 888px);
+    align-self: center;
+}
+
+.book-card > label { 
+    position: absolute;
+    right: 120px;
+}
+
+[type="checkbox"] {
+    position: absolute;
+    right: 100px;
+}
+
+button {
+    padding: 5px 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.add-book {
+    border: 3px solid var(--color1);
+}
+
+button:hover {
+    background-color: var(--color2);
 }
