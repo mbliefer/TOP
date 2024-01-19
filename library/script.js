@@ -59,7 +59,7 @@ function addBook() {
 function clearForm() {
     title.value = "";
     author.value = "";
-    pages.value  = "";
+    pages.value = "";
     read.checked = false;
     notRead.checked = true;
 }
