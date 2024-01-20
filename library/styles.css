@@ -1,8 +1,8 @@
 :root {
-    --font-color-light: rgb(220 206 231);
+    --font-color-light: rgb(232, 231, 233);
     --border-color: black;
-    --color1: rgb(119, 119, 139);
-    --color2: rgb(145, 119, 238);
+    --color1: rgb(44, 44, 47);
+    --color2: rgb(159, 156, 173);
     --color3: rgb(250, 244, 244);
     --color4: ;
 }
@@ -20,13 +20,13 @@ header {
     align-items: center;
     background-color: var(--color1);
     padding: 31px;
-    border-bottom: solid 9px;
+    border-bottom: solid 5px;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right,
             rgb(234, 226, 250),
-            rgb(219,164,219),
-            rgb(123,88,171),
-            rgb(219,164,219),
+            rgb(239, 228, 239),
+            rgb(98, 97, 101),
+            rgb(239, 228, 239),
             rgb(234, 226, 250));
     box-shadow: 0px 15px 30px var(--color3);
     z-index: 10;
@@ -37,14 +37,14 @@ header {
 }
 
 #book-entry > .close {
-    height: 50px;
+    height: 40px;
     position: absolute;
     top: 0;
     right: 0;
 }
 
 .trash {
-    height: 50px;
+    height: 30px;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -72,7 +72,7 @@ header {
 }
 
 #book-entry > input {
-    border: 3px solid var(--color1);
+    border: 1px solid var(--color1);
     border-radius: 5px;
     padding: 5px;
 }
@@ -80,8 +80,8 @@ header {
 #books::before {
     content: "";
     background-image: linear-gradient(to bottom,
-            rgb(218, 202, 240),
-            rgb(123, 88, 171));
+            rgb(120, 116, 125),
+            rgb(41, 39, 44));
     position: fixed;
     height: 100%;
     width: 100%;
@@ -132,7 +132,7 @@ button {
 }
 
 .add-book {
-    border: 3px solid var(--color1);
+    border: 1px solid var(--color1);
 }
 
 button:hover {
